@@ -9,8 +9,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var github_service_1 = require('../services/github.service');
 var ProfileComponent = (function () {
-    function ProfileComponent() {
+    function ProfileComponent(_githubService) {
+        this._githubService = _githubService;
+        this._githubService.getUser().subscribe(function (user) {
+            console.log(user);
+        });
     }
     ProfileComponent = __decorate([
         core_1.Component({
@@ -18,7 +23,7 @@ var ProfileComponent = (function () {
             selector: 'profile',
             templateUrl: "profile.component.html",
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [github_service_1.GithubService])
     ], ProfileComponent);
     return ProfileComponent;
 }());
