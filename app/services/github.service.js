@@ -31,6 +31,16 @@ var GithubService = (function () {
             '&client_secret=' + this.client_secret).map(function (res) { return res.json(); });
     };
     ;
+    GithubService.prototype.updateUser = function (username) {
+        this.username = username;
+    };
+    GithubService.prototype.updateLanguage = function (language) {
+        this.language = language;
+    };
+    GithubService.prototype.findReposByLanguage = function () {
+        return this._http.get('https://api.github.com/search/repositories?q=language:' + this.language + '&sort=stars&order=desc').map(function (res) { return res.json(); });
+    };
+    ;
     GithubService = __decorate([
         core_1.Injectable(), 
         __metadata('design:paramtypes', [http_1.Http])
